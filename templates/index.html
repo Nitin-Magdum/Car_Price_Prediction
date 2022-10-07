@@ -1,0 +1,214 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Car Price Prediction</title>
+    <link rel="stylesheet" type="text/css" href="../static/style.css" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <div class="login-root">
+      <div
+        class="box-root flex-flex flex-direction--column"
+        style="min-height: 100vh; flex-grow: 1"
+      >
+        <div class="loginbackground box-background--white padding-top--64">
+          <div class="loginbackground-gridContainer">
+            <div
+              class="box-root flex-flex"
+              style="grid-area: top / start / 8 / end"
+            >
+              <div
+                class="box-root"
+                style="
+                  background-image: linear-gradient(
+                    white 0%,
+                    rgb(247, 250, 252) 33%
+                  );
+                  flex-grow: 1;
+                "
+              ></div>
+            </div>
+            <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5">
+              <div
+                class="box-root box-divider--light-all-2 animationLeftRight tans3s"
+                style="flex-grow: 1"
+              ></div>
+            </div>
+            <div
+              class="box-root flex-flex"
+              style="grid-area: 6 / start / auto / 2"
+            >
+              <div
+                class="box-root box-background--blue800"
+                style="flex-grow: 1"
+              ></div>
+            </div>
+            <div
+              class="box-root flex-flex"
+              style="grid-area: 7 / start / auto / 4"
+            >
+              <div
+                class="box-root box-background--blue animationLeftRight"
+                style="flex-grow: 1"
+              ></div>
+            </div>
+            <div class="box-root flex-flex" style="grid-area: 8 / 4 / auto / 6">
+              <div
+                class="box-root box-background--gray100 animationLeftRight tans3s"
+                style="flex-grow: 1"
+              ></div>
+            </div>
+            <div
+              class="box-root flex-flex"
+              style="grid-area: 2 / 15 / auto / end"
+            >
+              <div
+                class="box-root box-background--cyan200 animationRightLeft tans4s"
+                style="flex-grow: 1"
+              ></div>
+            </div>
+            <div
+              class="box-root flex-flex"
+              style="grid-area: 3 / 14 / auto / end"
+            >
+              <div
+                class="box-root box-background--blue animationRightLeft"
+                style="flex-grow: 1"
+              ></div>
+            </div>
+            <div
+              class="box-root flex-flex"
+              style="grid-area: 4 / 17 / auto / 20"
+            >
+              <div
+                class="box-root box-background--gray100 animationRightLeft tans4s"
+                style="flex-grow: 1"
+              ></div>
+            </div>
+            <div
+              class="box-root flex-flex"
+              style="grid-area: 5 / 14 / auto / 17"
+            >
+              <h2 class="text-success">{{ prediction_text }}</h2>
+              <div
+                class="box-root box-divider--light-all-2 animationRightLeft tans3s"
+                style="flex-grow: 1"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="box-root padding-top--24 flex-flex flex-direction--column"
+          style="flex-grow: 1; z-index: 9"
+        >
+          <div
+            class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center"
+          ></div>
+          <div class="formbg-outer">
+            <div class="formbg">
+              <div class="formbg-inner padding-horizontal--48">
+                <h1 class="font-weight-bold text-primary">
+                  <a>Car Price Prediction</a>
+                </h1>
+                <span></span>
+                <form action="{{ url_for('predict')}}" method="post">
+                  <label>Model year of Car</label>
+
+                  <input
+                    type="number"
+                    id="first"
+                    name="Year"
+                    class="form-control"
+                  />
+
+                  <label>Showroom Price (In Lakh)</label>
+
+                  <input
+                    id="second"
+                    name="Present_Price"
+                    required="required"
+                    class="form-control"
+                  />
+
+                  <label>How Many Kilometers Drived?</label>
+
+                  <input
+                    id="third"
+                    name="Kms_Driven"
+                    required="required"
+                    class="form-control"
+                  />
+
+                  <label
+                    >How much owners previously had the car?(0 , 1 or 2)</label
+                  >
+
+                  <input
+                    id="fourth"
+                    name="Owner"
+                    required="required"
+                    class="form-control"
+                  />
+
+                  <label>Fuel Type</label>
+                  <div class="field padding-bottom--24 form-group input-group">
+                    <select
+                      name="Fuel_Type_Petrol"
+                      id="fuel"
+                      required="required"
+                      value="Petrol"
+                      class="form-control"
+                    >
+                      <option value="Petrol">Petrol</option>
+                      <option value="Diesel">Diesel</option>
+                      <option value="CNG">CNG</option>
+                    </select>
+                  </div>
+
+                  <label>Dealer or Individual</label>
+                  <div class="field padding-bottom--24 form-group input-group">
+                    <select
+                      name="Seller_Type_Individual"
+                      id="resea"
+                      required="required"
+                      class="form-control"
+                    >
+                      <option value="Dealer">Dealer</option>
+                      <option value="Individual">Individual</option>
+                    </select>
+                  </div>
+                  <label>Transmission Type</label>
+                  <div class="field padding-bottom--24 form-group input-group">
+                    <select
+                      name="Transmission_Mannual"
+                      id="research"
+                      required="required"
+                      class="form-control"
+                    >
+                      <option value="Mannual">Manual</option>
+                      <option value="Automatic">Automatic</option>
+                    </select>
+                  </div>
+                  <button
+                    id="sub"
+                    type="submit"
+                    class="btn btn-primary offset-md-4"
+                  >
+                    Calculate
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

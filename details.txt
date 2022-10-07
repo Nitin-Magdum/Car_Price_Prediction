@@ -1,0 +1,9 @@
+year
+showroom price
+how much cars had been used?
+fuel type(drop down)
+dealer or iduvisual(drop down)
+trasmission type(drop down)
+button for calculate price
+
+DOM Manupilation in py
